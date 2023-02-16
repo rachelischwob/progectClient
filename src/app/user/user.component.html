@@ -1,0 +1,58 @@
+
+<form (submit)="save()" #myForm="ngForm" >
+<div id="userForm">
+  <mat-form-field appearance="fill" >
+    <mat-label>First Name</mat-label>
+    <input matInput name="1" required="true" [formControl]="validFName" [(ngModel)]="myUser.FirstName">
+    <mat-error *ngIf="validFName.invalid">You must enter a value</mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="fill" >
+    <mat-label>Last Name</mat-label>
+    <input matInput  name="2" [(ngModel)]="myUser.LastName" required="true" [formControl]="validLName">
+    <mat-error *ngIf="validLName.invalid">You must enter a value</mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="fill" >
+    <mat-label>ID</mat-label>
+    <input matInput  name="3" [(ngModel)]="myUser.Id" required maxlength="9" minlength="9" pattern="[0-9]*"  [formControl]="validID">
+    <mat-error *ngIf="validID.invalid">{{getErrorMessage()}}</mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Gender</mat-label>
+    <mat-select  name="4" [(ngModel)]="myUser.EGender" required>
+      <mat-option value="one">femail</mat-option>
+      <mat-option value="two">mail</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>HMO</mat-label>
+    <mat-select  name="5"  [(ngModel)]="myUser.HMO" required>
+      <mat-option value="a">Macabi</mat-option>
+      <mat-option value="b">Leumit</mat-option>
+      <mat-option value="c">Meuchedet</mat-option>
+      <mat-option value="d">Clalit</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field >
+    <mat-label>Date Of Birdth</mat-label>
+    <input type="date"  name="6" matInput  [(ngModel)]="myUser.DOB" required="true">
+  </mat-form-field> 
+
+  <div id="h-Child">
+    <button id="plus" mat-mini-fab color="accent" aria-label="Example icon button with a plus one icon" (click)="addChild()">
+      <mat-icon>+</mat-icon>
+    </button>  
+    <h1>        my childs:</h1>
+    </div>
+  </div>
+<div  id="listOfChild">
+  <div *ngFor ="let c of myUser.arrChild" class="cs">
+     <app-child [myChild]="c"></app-child>
+  </div>
+
+</div>
+
+<button type="submit" mat-raised-button color="accent" [disabled]="!myForm.valid "  >send</button>
+
+
+</form>
+

@@ -1,0 +1,32 @@
+#userForm {
+  display: flex;
+  flex-direction: column;
+  width: 30vw;
+  margin-left: 35vw;
+  margin-top: 4vh
+}
+.cs{
+  border: 1px rgba(240, 30, 135, 0.486) solid;
+  margin: 1vh;
+    padding: 4vh;
+    border-radius: 5px;
+
+}
+#h-Child{
+  display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    width: 70vw;
+    margin: 3vw;
+}
+#listOfChild{
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+    justify-content: space-around;
+    margin-left: 10vw;
+    margin-right: 10vw;
+}
+#plus{
+  margin-right: 10px;
+}
