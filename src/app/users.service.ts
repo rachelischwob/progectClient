@@ -10,7 +10,7 @@ export class UsersService {
 
   constructor(public http: HttpClient) { }
   
-  baseRouteUrl = `${environment.baseUrl}/user`
+  baseRouteUrl = `${environment.baseUrl}/User`
   //staticUser = new BehaviorSubject<User>(null);
   staticUser:User =new User(null,null,null,null,null,null,[]);
 
@@ -19,7 +19,8 @@ export class UsersService {
   }
    
   addUser(u:User) {
-    return this.http.post<User>(`${this.baseRouteUrl}/Login`,u);
+    console.log(u)
+    return this.http.post<User>(`${this.baseRouteUrl}`,u);
   }
 
 }

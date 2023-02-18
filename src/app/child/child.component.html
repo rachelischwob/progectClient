@@ -1,15 +1,21 @@
 
 
-
+<form (submit)="saveMe()" #myForm2="ngForm" class="cs">
 <mat-form-field appearance="fill" >
     <mat-label>Name</mat-label>
-    <input matInput  [(ngModel)]="myChild.Name" required="true" >
+    <input matInput  [(ngModel)]="myChild.Name" required="true" [formControl]="validName" name="1">
+    <mat-error *ngIf="validName.invalid">You must enter a value</mat-error>
   </mat-form-field>
   <mat-form-field appearance="fill" >
     <mat-label>ID</mat-label>
-    <input matInput  [(ngModel)]="myChild.Id" >
+    <input matInput name="2" [(ngModel)]="myChild.Id"   maxlength="9" minlength="9" pattern="[0-9]*" [formControl]="validID">
+    <mat-error *ngIf="validID.invalid">{{getErrorMessage()}}</mat-error>
   </mat-form-field>
   <mat-form-field >
     <mat-label>Date Of Birdth</mat-label>
-    <input type="date" matInput  [(ngModel)]="myChild.DOB" required="true">
+    <input type="date" matInput name="3" [(ngModel)]="myChild.DOB" required="true">
   </mat-form-field>
+  <button type="submit" mat-icon-button color="accent" aria-label="Example icon button with a heart icon" [disabled]="!myForm2.valid " >
+    <mat-icon>favorite</mat-icon>
+  </button >
+</form>

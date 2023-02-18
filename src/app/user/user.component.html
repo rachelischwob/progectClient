@@ -18,7 +18,7 @@
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Gender</mat-label>
-    <mat-select  name="4" [(ngModel)]="myUser.EGender" required>
+    <mat-select  name="4" [(ngModel)]="myEgender" required>
       <mat-option value="one">femail</mat-option>
       <mat-option value="two">mail</mat-option>
     </mat-select>
@@ -26,10 +26,10 @@
   <mat-form-field appearance="fill">
     <mat-label>HMO</mat-label>
     <mat-select  name="5"  [(ngModel)]="myUser.HMO" required>
-      <mat-option value="a">Macabi</mat-option>
-      <mat-option value="b">Leumit</mat-option>
-      <mat-option value="c">Meuchedet</mat-option>
-      <mat-option value="d">Clalit</mat-option>
+      <mat-option value="Macabi">Macabi</mat-option>
+      <mat-option value="Leumit">Leumit</mat-option>
+      <mat-option value="Meuchedet">Meuchedet</mat-option>
+      <mat-option value="Clalit">Clalit</mat-option>
     </mat-select>
   </mat-form-field>
   <mat-form-field >
@@ -38,15 +38,15 @@
   </mat-form-field> 
 
   <div id="h-Child">
-    <button id="plus" mat-mini-fab color="accent" aria-label="Example icon button with a plus one icon" (click)="addChild()">
-      <mat-icon>+</mat-icon>
+    <button type="button" id="plus" mat-mini-fab color="accent" aria-label="Example icon button with a plus one icon" (click)="addChild()" >
+      <mat-icon>plus_one</mat-icon>
     </button>  
     <h1>        my childs:</h1>
     </div>
   </div>
 <div  id="listOfChild">
-  <div *ngFor ="let c of myUser.arrChild" class="cs">
-     <app-child [myChild]="c"></app-child>
+  <div *ngFor ="let c of myUser.arrChild" >
+     <app-child [myChild]="c" (mySaveEvent)="countSave($event)"></app-child>
   </div>
 
 </div>
@@ -55,4 +55,3 @@
 
 
 </form>
-
